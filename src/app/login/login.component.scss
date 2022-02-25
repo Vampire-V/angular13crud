@@ -1,0 +1,43 @@
+
+
+// .mat-form-field {
+//   margin-top: 16px;
+// }
+
+.login-form-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background: url(../../assets/images/Too.gif);
+}
+
+// :host {
+//   display: flex;
+//   justify-content: center;
+//   margin: 100px 0px;
+// }
+
+.mat-form-field {
+  min-width: 300px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.button-flex-container {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+mat-card-title,
+mat-card-content {
+  display: flex;
+  justify-content: center;
+}
+
+mat-icon {
+  float: left;
+  opacity: 0.5;
+  margin-top: 14px;
+}
