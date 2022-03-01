@@ -20,7 +20,10 @@ export class LoginComponent implements OnInit {
   isLoginFailed = false;
   errorMessage = '';
   roles: string[] = [];
-  auth!: Auth;
+  auth: Auth = {
+    email : '',
+    verifyCode : ''
+  };
 
   email = new FormControl('pipat.p@haier.co.th', [Validators.required, Validators.email]);
   verifycode = new FormControl('3135', [
@@ -48,6 +51,7 @@ export class LoginComponent implements OnInit {
     // const { email, verifycode } = this.authForm.value;
     this.auth.email = this.email.value
     this.auth.verifyCode = this.verifycode.value
+
     this.authService.login(this.auth).subscribe({
       next: (data) => {
         // console.log(data);
@@ -70,7 +74,7 @@ export class LoginComponent implements OnInit {
       complete: () => {
         // console.info('login complete..')
         if (this.isLoggedIn) {
-          this.route.navigateByUrl('')
+          this.route.navigateByUrl('/leave/profile')
         }
       }
     });
