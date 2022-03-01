@@ -5,7 +5,6 @@
 /tmp
 /out-tsc
 /bazel-out
-/src/environments/*
 
 # Node
 /node_modules
@@ -37,6 +36,7 @@ yarn-error.log
 /libpeerconnection.log
 testem.log
 /typings
+/src/environments/**
 
 # System files
 .DS_Store
