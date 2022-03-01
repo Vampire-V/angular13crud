@@ -6,9 +6,9 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { catchError, of, throwError } from 'rxjs';
 import { AuthService } from '../_services/auth.service';
 import { TokenStorageService } from '../_services/token-storage.service';
+import { Auth } from '../_interfaces/auth';
 
 @Component({
   selector: 'app-login',
@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit {
   isLoginFailed = false;
   errorMessage = '';
   roles: string[] = [];
+  auth!: Auth;
 
   email = new FormControl('pipat.p@haier.co.th', [Validators.required, Validators.email]);
   verifycode = new FormControl('3135', [
@@ -27,18 +28,6 @@ export class LoginComponent implements OnInit {
     Validators.maxLength(4),
     Validators.minLength(4),
   ]);
-
-  login = new FormGroup({
-    email: new FormControl(this.email.value, [
-      Validators.required,
-      Validators.email,
-    ]),
-    verifyCode: new FormControl(this.verifycode.value, [
-      Validators.required,
-      Validators.maxLength(4),
-      Validators.minLength(4),
-    ]),
-  });
 
   constructor(
     private authService: AuthService,
@@ -57,8 +46,9 @@ export class LoginComponent implements OnInit {
 
   onSubmit(): void {
     // const { email, verifycode } = this.authForm.value;
-
-    this.authService.login(this.login.value).subscribe({
+    this.auth.email = this.email.value
+    this.auth.verifyCode = this.verifycode.value
+    this.authService.login(this.auth).subscribe({
       next: (data) => {
         // console.log(data);
 

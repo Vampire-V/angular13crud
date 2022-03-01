@@ -44,12 +44,6 @@ import { AuthService } from './_services/auth.service';
     MaterialModule,
   ],
   providers: [
-    {
-      provide: APP_INITIALIZER,
-      useFactory: appInitializer,
-      multi: true,
-      deps: [AuthService],
-    },
     authInterceptorProviders,
   ],
   bootstrap: [AppComponent],

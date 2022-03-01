@@ -46,15 +46,20 @@ export class AuthInterceptor implements HttpInterceptor {
     //   this.tryRefreshingTokens()
     //   console.log("Auth intercepter refresh token..");
     // }
+    console.log(request);
 
     return next.handle(request).pipe(
       catchError((error) => {
         console.log('error interceptor..');
         if (error instanceof HttpErrorResponse && error.status === 401) {
+          console.log('401');
+
           return this.handle401Error(request, next);
         }
-        console.log(error);
-        return throwError(() => error);
+        console.error(error);
+        console.log('handle');
+
+        return throwError(() => {});
       })
     );
   }
@@ -87,7 +92,7 @@ export class AuthInterceptor implements HttpInterceptor {
         );
       }
     }
-    console.log(!this.isRefreshing);
+    // console.log(!this.isRefreshing);
 
     return this.refreshTokenSubject.pipe(
       filter((token) => token !== null),

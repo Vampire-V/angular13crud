@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../_services/user.service';
-
+export interface Tile {
+  color: string;
+  cols: number;
+  rows: number;
+  text: string;
+}
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -8,19 +13,13 @@ import { UserService } from '../_services/user.service';
 })
 export class HomeComponent implements OnInit {
   content?: any;
-  constructor(private userService: UserService) {}
+  tiles: Tile[] = [
+    { text: 'One', cols: 3, rows: 1, color: 'lightblue' },
+    { text: 'Two', cols: 1, rows: 2, color: 'lightgreen' },
+    { text: 'Three', cols: 1, rows: 1, color: 'lightpink' },
+    { text: 'Four', cols: 2, rows: 1, color: '#DDBDF1' },
+  ];
+  constructor() {}
 
-  ngOnInit(): void {
-    this.userService.getPublicContent().subscribe({
-      next:(data) => {
-        this.content = data.item;
-      },
-      error:(err) => {
-
-        this.content = err.statusText
-        // JSON.parse(err.error).message;
-      }
-    }
-    );
-  }
+  ngOnInit(): void {}
 }

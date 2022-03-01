@@ -7,16 +7,17 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { AppLayoutComponent } from './app-layout/app-layout.component';
 import { AuthGuard } from './_guards/auth.guard';
 
+// แยก route ตาม modules
 const routes: Routes = [
   {
-    path: '',
+    path: 'leave',
     component: AppLayoutComponent,
     children: [
-      { path: '', component: HomeComponent ,canActivate:[AuthGuard]},
       { path: 'profile', component: ProfileComponent ,canActivate:[AuthGuard]}
     ]
   },
-  { path: 'login', component: LoginComponent },
+  // { path: '', component: HomeComponent},
+  { path: '', component: LoginComponent },
   { path: 'page-not-found', component: PageNotFoundComponent },
   { path: '**', component: PageNotFoundComponent },
 ];

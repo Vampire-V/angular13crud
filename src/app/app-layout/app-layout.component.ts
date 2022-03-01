@@ -19,23 +19,23 @@ export class AppLayoutComponent implements OnInit {
   eventBusSub?: Subscription;
   isExpanded: boolean = true;
   menus: Menu[] = [
-    {
-      uri: '',
-      icon: 'home',
-      name: 'Home',
-    },
+    // {
+    //   uri: '',
+    //   icon: 'home',
+    //   name: 'Home',
+    // },
     {
       uri: 'profile',
       icon: 'account_circle',
       name: 'Leave',
     },
+    // {
+    //   uri: 'error',
+    //   icon: 'running_with_errors',
+    //   name: 'Error page',
+    // },
     {
-      uri: 'error',
-      icon: 'running_with_errors',
-      name: 'Error page',
-    },
-    {
-      uri: 'login',
+      uri: '',
       icon: 'running_with_errors',
       name: 'Logout',
     },
